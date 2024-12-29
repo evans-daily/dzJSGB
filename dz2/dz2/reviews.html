@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Отзывы</title>
+    <style>
+        #reviews {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .review {
+            background-color: #f7f7f7;
+            margin-bottom: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Отзывы</h1>
+
+    <div id="reviews"></div>
+
+    <script>
+let reviewText = "Новый телефон просто замечательный!";
+if (reviewText.length >= 50 && reviewText.length <= 500) {
+  addReview("Apple iPhone 13", reviewText);
+} else {
+  console.log("Отзыв должен содержать от 50 до 500 символов.");
+}
+
+const initialData = 
+[
+    {
+        product: "Apple iPhone 13",
+        reviews: [
+            {
+                id: "1",
+                text: "Отличный телефон! Батарея держится долго.",
+            },
+            {
+                id: "2",
+                text: "Камера супер, фото выглядят просто потрясающе.",
+            },
+        ],
+    },
+    {
+        product: "Samsung Galaxy Z Fold 3",
+        reviews: [
+            {
+                id: "3",
+                text: "Интересный дизайн, но дорогой.",
+            },
+        ],
+    },
+    {
+        product: "Sony PlayStation 5",
+        reviews: [
+            {
+                id: "4",
+                text: "Люблю играть на PS5, графика на высоте.",
+            },
+        ],
+    },
+    
+];
+
+const product = 'Product B';
+
+const productData = initialData.find(item => item.product === product);
+
+console.log(productData);
+
+
+for (let i = 0; i < initialData.length; i++) {
+    const reviews = initialData[i].reviews;
+    for (let j = 0; j < reviews.length; j++) {
+        const review = reviews[j];
+        
+        const div = document.createElement("div");
+        div.innerHTML = `<p>${review.text}</p>`;
+        document.getElementById("reviews").appendChild(div);
+    }
+}
+
+    </script>
+</body>
+</html>

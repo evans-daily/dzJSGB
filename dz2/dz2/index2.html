@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Library {
+    #books = [];
+
+    constructor(initialBooks) {
+        if (initialBooks.length === 0) {
+            throw new Error('Библиотека не может быть инициализирована пустым массивом книг');
+        } else {
+            const uniqueBooks = [...new Set(initialBooks)]; 
+
+            if (uniqueBooks.length !== initialBooks.length) { 
+                throw new Error("В предоставленном массиве есть повторяющиеся книги");
+            } else {
+                this.#books = uniqueBooks;
+            }
+        }
+    }
+
+    get allBooks() {
+        return this.#books;
+    }
+
+    addBook(title) {
+        if (this.hasBook(title)) {
+            throw new Error(`Книга с названием "${title}" уже существует в библиотеке.`);
+        } else {
+            this.#books.push({ title });
+        }
+    }
+
+    removeBook(title) {
+        const index = this.#books.findIndex((book) => book.title === title);
+
+        if (index === -1) {
+            throw new Error(`Книги с названием "${title}" нет в библиотеке.`);
+        } else {
+            this.#books.splice(index, 1);
+        }
+    }
+
+    hasBook(title) {
+        return !!this.#books.find((book) => book.title === title);
+    }
+}
+
+const library = new Library(['Прислуга Кэтрин Стокетт', 'Соловей Кристин Ханна']);
+console.log(library.allBooks); 
+
+try {
+  library.addBook('Люди, которые всегда со мной');
+  console.log(library.allBooks); 
+} catch (error) {
+  console.error(error);
+}
+
+try {
+  library.removeBook('Прислуга Кэтрин Стокетт'); 
+} catch (error) {
+  console.error(error); 
+}
+
+console.log(library.hasBook('Люди, которые всегда со мной')); 
+    </script>
+</body>
+</html>

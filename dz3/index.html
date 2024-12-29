@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>review of products</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Отзывы о продуктах</h1>
+        <form id="add-review-form">
+            <label for="product-name">Название продукта:</label>
+            <input type="text" id="product-name" required><br>
+            <label for="review">Отзыв:</label>
+            <textarea id="review" rows="5" cols="30" required></textarea><br>
+            <button id="add-review-button" type="button">Добавить отзыв</button>
+        </form>
+        <ul id="products-list"></ul>
+        <p>Список всех продуктов, о которых были оставлены отзывы.</p>
+        <hr>
+        <div id="reviews-container"></div>
+        <p>При клике на название продукта отображается список всех отзывов по этому продукту.</p>
+    </div>
+
+
+    <script src="scripts.js"></script>
+</body>
+</html>
